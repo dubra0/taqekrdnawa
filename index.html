@@ -97,6 +97,8 @@ tr.bad td{color:var(--warn)}
 .empty{color:var(--muted);padding:20px 0;text-align:center}
 @media print{.bar,.noprint{display:none!important}body{background:#fff;color:#000}.card{border:0;padding:0}.grid{grid-template-columns:repeat(5,1fr)}.qr{break-inside:avoid;border:1px solid #ccc}}
 @media (prefers-reduced-motion:reduce){.fill{transition:none}}
+@keyframes reppulse{0%,100%{box-shadow:0 0 0 0 rgba(180,67,47,.45)}50%{box-shadow:0 0 0 7px rgba(180,67,47,0)}}
+@media (prefers-reduced-motion:no-preference){#sPbox.alert{animation:reppulse 1.6s ease-in-out infinite}}
 </style>
 </head>
 <body>
@@ -310,6 +312,7 @@ async function enter(){
   const d=await rpc('admin_stats',{});
   if(!d.ok){ endSession(); return; }
   $('#login').hidden=true; $('#app').hidden=false; $('#logout').hidden=false;
+  try{ if(window.Notification && Notification.permission==='default') Notification.requestPermission(); }catch(e){}
   showStats(d); loadTpl(); loadReports(); loadSec();
   clearInterval(timer); timer=setInterval(()=>{ if(!busy){ loadReports(); refresh(); } },30000);
 }
@@ -337,6 +340,7 @@ function showStats(d){
     $('#sDbox').classList.toggle('warn',pct>=70&&pct<90); $('#sDbox').classList.toggle('alert',pct>=90);
   }
   $('#sP').textContent=nf(d.reports); $('#sPbox').classList.toggle('alert', d.reports>0);
+  reportAlert(d.reports);
   const tb=$('#btable');
   if(!batches.length){tb.innerHTML='<tr><td colspan="5" class="empty">هێشتا هیچ گرووپێک نییە. یەکەم گرووپ لە سەرەوە دروست بکە.</td></tr>';return}
   tb.innerHTML=batches.map(b=>{
@@ -352,6 +356,22 @@ function showStats(d){
   fillBaseList();
   if(busy) lock(true);
 }
+
+/* ---------- alert on a new change request (sound + flashing tab title) ---------- */
+let prevReports=null, flashT=null, baseTitle=document.title;
+function beep(){ try{ const A=window.AudioContext||window.webkitAudioContext; if(!A) return; const c=new A(); const o=c.createOscillator(), g=c.createGain(); o.type='sine'; o.frequency.setValueAtTime(880,c.currentTime); o.frequency.setValueAtTime(1175,c.currentTime+0.12); g.gain.setValueAtTime(0.18,c.currentTime); g.gain.exponentialRampToValueAtTime(0.001,c.currentTime+0.5); o.connect(g); g.connect(c.destination); o.start(); o.stop(c.currentTime+0.5); }catch(e){} }
+function startFlash(n){ clearInterval(flashT); let on=false; flashT=setInterval(()=>{ document.title=(on=!on)?('🔴 ('+nf(n)+') داواکاری نوێ!'):baseTitle; },900); }
+function stopFlash(){ if(flashT){ clearInterval(flashT); flashT=null; } document.title=baseTitle; }
+function reportAlert(n){
+  if(prevReports!==null && n>prevReports){
+    beep();
+    if(document.hidden || !document.hasFocus()) startFlash(n);
+    try{ if(window.Notification && Notification.permission==='granted') new Notification('دوو برا — داواکاری گۆڕینی نوێ',{body:'کڕیارێک داوای گۆڕینی زانیاری کردووە. چاوەڕوان: '+nf(n)}); }catch(e){}
+  }
+  prevReports=n;
+}
+window.addEventListener('focus',stopFlash);
+document.addEventListener('visibilitychange',()=>{ if(!document.hidden) stopFlash(); });
 
 /* ---------- delete a group ---------- */
 let delId=null, delArmed=false;

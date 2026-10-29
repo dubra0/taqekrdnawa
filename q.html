@@ -217,6 +217,83 @@ html[dir="rtl"] .support-option-btn svg{transform:scaleX(-1)}
 .guide-h{display:flex;justify-content:space-between;align-items:center;padding-inline:4px;margin-bottom:12px}
 .guide-h b{font-weight:900;background:linear-gradient(90deg,#fff,var(--gold2));-webkit-background-clip:text;background-clip:text;color:transparent}
 .guide-h span{direction:ltr;font-family:var(--f-en);font-size:.66rem;font-weight:700;letter-spacing:.2em;color:var(--muted)}
+.g-listen{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-en);font-size:.72rem;font-weight:800;color:var(--gold2);
+  background:rgba(247,201,72,.12);border:1px solid rgba(247,201,72,.35);border-radius:99px;padding:5px 11px;cursor:pointer;transition:all .2s}
+.g-listen svg{width:14px;height:14px}
+.g-listen:hover{background:rgba(247,201,72,.22)}
+.g-listen.on{background:var(--gold);color:#1a1204;border-color:var(--gold)}
+.g-listen.on svg{animation:pulse 1s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.5}}
+.warn-listen{display:inline-flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px;border-radius:12px;cursor:pointer;
+  font-weight:800;font-size:.9rem;color:#ff8a8a;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.3);transition:all .2s}
+.warn-listen svg{width:16px;height:16px}
+.warn-listen:hover{background:rgba(239,68,68,.18)}
+.warn-listen.on{background:#ef4444;color:#fff;border-color:#ef4444}
+.warn-listen.on svg{animation:pulse 1s ease-in-out infinite}
+
+/* ===== v5: animated simulator ===== */
+.sim-btn-open{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-bottom:12px;padding:13px;border-radius:14px;cursor:pointer;
+  font-weight:800;font-size:.92rem;color:#1a1204;background:linear-gradient(135deg,var(--gold2),var(--gold));border:0;box-shadow:0 12px 26px -12px rgba(247,201,72,.9)}
+.sim-btn-open svg{width:18px;height:18px}
+.sim-overlay{position:fixed;inset:0;z-index:1200;background:rgba(3,6,16,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:none;place-items:center;padding:16px}
+.sim-overlay.on{display:grid;animation:fadeIn .25s ease}
+.sim-wrap{width:100%;max-width:360px;display:grid;gap:14px;justify-items:center}
+.sim-head{display:flex;justify-content:space-between;align-items:center;width:100%}
+.sim-head b{font-weight:900;font-size:1rem;background:linear-gradient(90deg,#fff,var(--gold2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sim-close{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:1rem;cursor:pointer}
+.sim-phone{position:relative;width:min(66vw,240px);aspect-ratio:9/19;border-radius:34px;background:#000;border:5px solid #1b2238;box-shadow:0 20px 50px -14px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.06);overflow:hidden}
+.sim-phone::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:40%;height:18px;background:#000;border-radius:0 0 14px 14px;z-index:5}
+.sim-scr{position:absolute;inset:0;overflow:hidden;font-family:var(--f-en)}
+.sim-tap{position:absolute;width:30px;height:30px;border-radius:50%;border:2px solid #fff;z-index:6;pointer-events:none;transform:translate(-50%,-50%);transition:left .5s,top .5s}
+.sim-tap::after{content:"";position:absolute;inset:-9px;border-radius:50%;border:2px solid #fff;animation:tapR 1.4s ease-out infinite}
+.sim-hand{position:absolute;z-index:7;font-size:26px;pointer-events:none;transition:left .5s,top .5s;transform:translate(-10%,-6%);filter:drop-shadow(0 4px 6px rgba(0,0,0,.5))}
+@keyframes tapR{0%{transform:scale(.4);opacity:.9}70%,100%{transform:scale(1.6);opacity:0}}
+.sim-cap{text-align:center;display:grid;gap:5px;min-height:62px}
+.sim-cap em{font-style:normal;font-family:var(--f-en);font-weight:900;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;margin:0 auto;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#1a1204}
+.sim-cap b{font-size:1.02rem}
+.sim-cap p{margin:0;color:var(--muted);font-size:.84rem;line-height:1.5}
+.sim-dots{display:flex;gap:6px;justify-content:center}
+.sim-dots i{width:7px;height:7px;border-radius:99px;background:rgba(255,255,255,.2);transition:all .3s}
+.sim-dots i.on{width:20px;background:var(--gold)}
+.sim-ctrl{display:flex;align-items:center;justify-content:center;gap:16px}
+.sim-ctrl button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:50%;width:44px;height:44px;cursor:pointer;font-size:1.2rem;display:grid;place-items:center}
+.sim-ctrl .play{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#1a1204;border:0;width:54px;height:54px;font-size:1.2rem}
+.ios{position:absolute;inset:0;padding:26px 10px 10px}
+.ios-home{background:linear-gradient(160deg,#3b2b7a,#122a5c);display:grid;grid-template-columns:repeat(4,1fr);gap:11px;align-content:start;padding-top:38px}
+.ios-home i{aspect-ratio:1;border-radius:12px;background:rgba(255,255,255,.18)}
+.ios-home i.as{background:linear-gradient(180deg,#38bdf8,#2563eb);display:grid;place-items:center;box-shadow:0 0 0 2px #fff,0 0 16px rgba(56,189,248,.9)}
+.ios-home i.as::after{content:"A";color:#fff;font:900 16px var(--f-en)}
+.ios-white{background:#f2f2f7}
+.ios-top{display:flex;justify-content:space-between;align-items:center;padding:4px 4px 2px}
+.ios-top b{font:900 15px var(--f-en);color:#111}
+.ios-av{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#a5b4fc,#6366f1);box-shadow:0 0 0 2px #2563eb}
+.ios-card{height:58px;border-radius:12px;margin-top:9px;background:linear-gradient(135deg,#fbcfe8,#c4b5fd)}
+.ios-card.c2{background:linear-gradient(135deg,#bae6fd,#a7f3d0);height:46px}
+.ios-logo{width:34px;height:34px;border-radius:9px;background:#111;margin:12px auto 8px}
+.ios-ttl{text-align:center;font:800 13px var(--f-en);color:#111;margin-bottom:10px}
+.ios-inp{height:32px;border-radius:9px;background:#fff;border:1px solid #d1d5db;margin:7px 0;display:flex;align-items:center;padding:0 10px;gap:3px}
+.ios-inp i{width:5px;height:5px;border-radius:50%;background:#374151}
+.ios-go{height:34px;border-radius:9px;background:#0a84ff;margin-top:9px;display:grid;place-items:center;color:#fff;font:800 12px var(--f-en)}
+.ios-search{height:26px;border-radius:9px;background:#e3e3e8;margin-bottom:8px}
+.ios-row{min-height:38px;border-radius:10px;background:#fff;margin-top:8px;display:flex;align-items:center;padding:8px 10px;color:#111;font:700 11px var(--f-en);justify-content:space-between;gap:6px}
+.ios-row.hl{box-shadow:0 0 0 2px #0a84ff;background:#eaf4ff}
+.ios-row .chev{color:#c7c7cc}
+.ios-num{min-height:36px;border-radius:9px;margin-top:8px;display:flex;align-items:center;gap:8px;padding:6px 10px;font:700 11px var(--f-en);background:#fff;color:#111;direction:ltr}
+.ios-num.old{opacity:.6;text-decoration:line-through;box-shadow:0 0 0 2px #ef4444}
+.ios-num.new{box-shadow:0 0 0 2px #22c55e}
+.ios-num .mk{width:16px;height:16px;border-radius:50%;color:#fff;display:grid;place-items:center;font-size:12px;flex:none}
+.ios-num.old .mk{background:#ef4444}.ios-num.new .mk{background:#22c55e}
+.ios-otp{display:flex;gap:5px;justify-content:center;margin-top:12px}
+.ios-otp b{width:24px;height:32px;border-radius:7px;background:#fff;border:1px solid #d1d5db}
+
+/* یەدەگ بۆ مۆبایلی کۆن کە aspect-ratio پشتگیری ناکات (پێش iOS 15) */
+@supports not (aspect-ratio: 1 / 1){
+  .emblem{height:min(58vw,220px)}
+  .emblem .logo-box{height:76%}
+  .lang-select-card .logo-box{height:120px}
+  .sim-phone{height:430px}
+  .apps i,.ios-home i{height:34px}
+}
 .g-track{display:grid;grid-auto-flow:column;grid-auto-columns:100%;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
 .g-track::-webkit-scrollbar{display:none}
 .g-card{scroll-snap-align:center;display:flex;gap:14px;align-items:center;background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:18px;padding:14px;min-width:0}
@@ -365,7 +442,23 @@ html[dir="rtl"] .support-option-btn svg{transform:scaleX(-1)}
         تکایە بەهیچ شێوەیەک ئەم Apple ID له Settings ی موبایلەکەت داخل مەکە! تەنها لە App Store داخل بکە.<br><br>
         کاتی داخلکردنی، تکایە ڕاستەوخۆ بیخەرە سەر ژمارەی موبایلی خۆت.
       </div>
+      <button class="warn-listen" id="warnListen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a9 9 0 0 1 0 14"/></svg><span id="warnListenLabel">گوێ بگرە</span></button>
       <button class="modal-btn" id="closeModalBtn" type="button">تێگەیشتم، پیشاندانی زانیارییەکان</button>
+    </div>
+  </div>
+
+  <!-- Simulator: ڕێبەری ئەنیمەیشنی زیندوو -->
+  <div class="sim-overlay" id="simModal">
+    <div class="sim-wrap">
+      <div class="sim-head"><b id="simTitle">🎬</b><button class="sim-close" id="simClose" type="button">✕</button></div>
+      <div class="sim-phone"><div class="sim-scr" id="simScreen"></div></div>
+      <div class="sim-dots" id="simDots"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="sim-cap" id="simCap"></div>
+      <div class="sim-ctrl">
+        <button id="simPrev" type="button">‹</button>
+        <button class="play" id="simPlay" type="button"><span id="simPlayIcon">▶</span></button>
+        <button id="simNext" type="button">›</button>
+      </div>
     </div>
   </div>
 
@@ -450,37 +543,37 @@ const DEMO = false; // تەنها بۆ پیشاندان
 
 const T = {
   ku: { dir:'rtl', code:'KU', title:'زانیاری کارت', checking:'پشکنین…',
-        email:'Email', password:'Password', otpTitle:'کۆدی دڵنیایی (OTP)', otpWait:'بۆ بینینی کۆد، دوگمەی نوێکردنەوە دابگرە...', otpNone:'کۆد هێشتا نەگەیشتووە، چەند چرکەیەکی تر دووبارە نوێی بکەرەوە.', otpSearch:'چاوەڕێی کۆد دەکەین...', guideTitle:'چۆن داخلی بکەم؟', g1t:'App Store بکەرەوە', g1d:'تەنها لە App Store، نەک لە Settings.', g2t:'وێنەی پرۆفایل دابگرە', g2d:'لە سەرەوەی App Store، وێنەی پرۆفایلەکە دابگرە.', g3t:'ئیمەیڵ و پاسۆرد بنووسە', g3d:'پاشان کۆدی OTP لەم پەڕەیە وەربگرە و بینووسە.', partA:'داخلبوون لە App Store', partB:'گۆڕین بۆ ژمارەی خۆت', g4t:'بچۆ account.apple.com', g4d:'لە Safari بیکەرەوە و هەمان ئیمەیڵ و پاسۆرد و کۆدی OTP بنووسە.', g5t:'Sign-In and Security', g5d:'ئەم بەشە بکەرەوە، پاشان Account Security هەڵبژێرە.', g6t:'ژمارەی خۆت زیاد بکە', g6d:'لە Trusted Phone Numbers ژمارەکەت زیاد بکە و کۆدی SMS بنووسە، پاشان ژمارە کۆنەکە بسڕەوە.',  copy:'کۆپی کردن', copied:'کۆپی کرا ✓',
+        email:'Email', password:'Password', otpTitle:'کۆدی دڵنیایی (OTP)', otpWait:'بۆ بینینی کۆد، دوگمەی نوێکردنەوە دابگرە...', otpNone:'کۆد هێشتا نەگەیشتووە، چەند چرکەیەکی تر دووبارە نوێی بکەرەوە.', otpSearch:'چاوەڕێی کۆد دەکەین...', guideTitle:'چۆن داخلی بکەم؟', g1t:'App Store بکەرەوە', g1d:'تەنها لە App Store، نەک لە Settings.', g2t:'وێنەی پرۆفایل دابگرە', g2d:'لە سەرەوەی App Store، وێنەی پرۆفایلەکە دابگرە.', g3t:'ئیمەیڵ و پاسۆرد بنووسە', g3d:'پاشان کۆدی OTP لەم پەڕەیە وەربگرە و بینووسە.', partA:'داخلبوون لە App Store', partB:'گۆڕین بۆ ژمارەی خۆت', g4t:'بچۆ ناو Settings', g4d:'لە Settings دا لە سەرەوە ناوەکەت (Apple ID) دابگرە.', g5t:'Sign-In & Security', g5d:'بیکەرەوە، پاشان Trusted Phone Numbers هەڵبژێرە.', g6t:'ژمارەی خۆت زیاد بکە', g6d:'لە Trusted Phone Numbers ژمارەکەت زیاد بکە و کۆدی SMS بنووسە، پاشان ژمارە کۆنەکە بسڕەوە.',  copy:'کۆپی کردن', copied:'کۆپی کرا ✓',
         updateBtn:'نوێکردنەوە', invalid:'ئەم QR کۆدە دروست نییە یاخود بەردەست نییە', net:'پەیوەندی نەکرا. ئینتەرنێت بپشکنە.', error:'هەڵە', thanks:'سوپاس بۆ متمانەکەت', modalBtn:'تێگەیشتم، پیشاندانی زانیارییەکان',
         warningTitle:'⚠️ ئاگادارییەکی گرنگ', warningText:'تکایە بەهیچ شێوەیەک ئەم Apple ID له Settings ی موبایلەکەت داخل مەکە! تەنها لە App Store داخل بکە.<br><br>کاتی داخلکردنی، تکایە ڕاستەوخۆ بیخەرە سەر ژمارەی موبایلی خۆت.',
         supOpen:'پەیوەندی بە سەپۆرت (Support)', supTitle:'تکایە کێشەکەت دیاری بکە:',
         opt1:'ئەم Apple ID کار ناکات', opt2:'پاسۆرد یان ئیمەیڵ هەڵەیە', opt3:'پرسیارێکی تری هەیە / کێشەی تر',
         supWait:'چاوەڕێ بکە...', supDone:'✅ داواکارییەکەت نێردرا بۆ سەپۆرت. بە زوویی چارەسەر دەکرێت.', supAlready:'داواکارییەکەت پێشتر نێردراوە.', supErr:'نەنێردرا، دووبارە هەوڵ بدەرەوە.',
-        customPlaceholder:'پرسیار یان کێشەکەت لێرە بنووسە...', extraTitle:'زانیاری زیاتر', dobLabel:'بەرواری لەدایکبوون', phoneLabel:'ژمارەی مۆبایل', openStore:'کردنەوەی App Store', doneBtn:'✅ تەواو بوو، سوپاس', doneSent:'سوپاس! تۆمارکرا ✓' },
+        customPlaceholder:'پرسیار یان کێشەکەت لێرە بنووسە...', extraTitle:'زانیاری زیاتر', dobLabel:'بەرواری لەدایکبوون', phoneLabel:'ژمارەی مۆبایل', openStore:'کردنەوەی App Store', doneBtn:'✅ تەواو بوو، سوپاس', doneSent:'سوپاس! تۆمارکرا ✓', listen:'گوێ بگرە', watchAnim:'بینینی بە ئەنیمەیشن 🎬' },
   ar: { dir:'rtl', code:'AR', title:'معلومات البطاقة', checking:'جارٍ التحقق…',
-        email:'Email', password:'Password', otpTitle:'رمز التحقق (OTP)', otpWait:'لإظهار الرمز، اضغط على زر التحديث...', otpNone:'لم يصل الرمز بعد، حدّث مرة أخرى بعد ثوانٍ.', otpSearch:'بانتظار الرمز...', guideTitle:'كيف أسجّل الدخول؟', g1t:'افتح App Store', g1d:'من App Store فقط، وليس من الإعدادات.', g2t:'اضغط على صورة الحساب', g2d:'في أعلى App Store اضغط على صورة الملف الشخصي.', g3t:'أدخل البريد وكلمة المرور', g3d:'ثم خذ رمز OTP من هذه الصفحة وأدخله.', partA:'الدخول إلى App Store', partB:'التحويل إلى رقمك', g4t:'افتح account.apple.com', g4d:'من Safari أدخل نفس البريد وكلمة المرور ورمز OTP.', g5t:'Sign-In and Security', g5d:'افتح هذا القسم ثم اختر Account Security.', g6t:'أضف رقمك', g6d:'في Trusted Phone Numbers أضف رقمك وأدخل رمز SMS، ثم احذف الرقم القديم.',  copy:'نسخ', copied:'تم النسخ ✓',
+        email:'Email', password:'Password', otpTitle:'رمز التحقق (OTP)', otpWait:'لإظهار الرمز، اضغط على زر التحديث...', otpNone:'لم يصل الرمز بعد، حدّث مرة أخرى بعد ثوانٍ.', otpSearch:'بانتظار الرمز...', guideTitle:'كيف أسجّل الدخول؟', g1t:'افتح App Store', g1d:'من App Store فقط، وليس من الإعدادات.', g2t:'اضغط على صورة الحساب', g2d:'في أعلى App Store اضغط على صورة الملف الشخصي.', g3t:'أدخل البريد وكلمة المرور', g3d:'ثم خذ رمز OTP من هذه الصفحة وأدخله.', partA:'الدخول إلى App Store', partB:'التحويل إلى رقمك', g4t:'افتح الإعدادات (Settings)', g4d:'في الإعدادات اضغط على اسمك (Apple ID) في الأعلى.', g5t:'Sign-In & Security', g5d:'افتحه ثم اختر Trusted Phone Numbers.', g6t:'أضف رقمك', g6d:'في Trusted Phone Numbers أضف رقمك وأدخل رمز SMS، ثم احذف الرقم القديم.',  copy:'نسخ', copied:'تم النسخ ✓',
         updateBtn:'تحديث', invalid:'رمز QR هذا غير صالح أو غير موجود', net:'تعذّر الاتصال. تحقّق من الإنترنت.', error:'خطأ', thanks:'شكراً لثقَتِك', modalBtn:'فهمت، عرض المعلومات',
         warningTitle:'⚠️ تنبيه مهم', warningText:'يرجى عدم إدخال Apple ID هذا في إعدادات الهاتف (Settings) نهائياً! قم بإدخاله في App Store فقط.<br><br>عند الإدخال، يرجى وضعه مباشرة على رقم هاتفك.',
         supOpen:'الاتصال بالدعم (Support)', supTitle:'يرجى تحديد مشكلتك:',
         opt1:'هذا Apple ID لا يعمل', opt2:'كلمة المرور أو البريد خطأ', opt3:'دي سؤال آخر / مشكلة أخرى',
         supWait:'جاري الانتظار...', supDone:'✅ تم إرسال طلبك إلى الدعم. سيتم الحل قريباً.', supAlready:'تم إرسال طلبك مسبقاً.', supErr:'فشل الإرسال، حاول مجدداً.',
-        customPlaceholder:'اكتب سؤالك أو مشكلتك هنا...', extraTitle:'معلومات إضافية', dobLabel:'تاريخ الميلاد', phoneLabel:'رقم الهاتف', openStore:'فتح App Store', doneBtn:'✅ تم بنجاح، شكراً', doneSent:'شكراً! تم التسجيل ✓' },
+        customPlaceholder:'اكتب سؤالك أو مشكلتك هنا...', extraTitle:'معلومات إضافية', dobLabel:'تاريخ الميلاد', phoneLabel:'رقم الهاتف', openStore:'فتح App Store', doneBtn:'✅ تم بنجاح، شكراً', doneSent:'شكراً! تم التسجيل ✓', listen:'استمع', watchAnim:'شاهد بالرسوم المتحركة 🎬' },
   en: { dir:'ltr', code:'EN', title:'Card details', checking:'Verifying…',
-        email:'Email', password:'Password', otpTitle:'Verification Code (OTP)', otpWait:'To see the code, click the update button...', otpNone:'No code yet — refresh again in a few seconds.', otpSearch:'Waiting for the code...', guideTitle:'How to sign in', g1t:'Open the App Store', g1d:'App Store only — not Settings.', g2t:'Tap your profile picture', g2d:'At the top of the App Store, tap the profile icon.', g3t:'Enter email & password', g3d:'Then get the OTP code from this page and type it in.', partA:'Sign in to App Store', partB:'Switch to your number', g4t:'Go to account.apple.com', g4d:'Open it in Safari and sign in with the same email, password and OTP code.', g5t:'Sign-In and Security', g5d:'Open this section, then choose Account Security.', g6t:'Add your own number', g6d:'Under Trusted Phone Numbers, add your number and enter the SMS code, then delete the old number.',  copy:'Copy', copied:'Copied ✓',
+        email:'Email', password:'Password', otpTitle:'Verification Code (OTP)', otpWait:'To see the code, click the update button...', otpNone:'No code yet — refresh again in a few seconds.', otpSearch:'Waiting for the code...', guideTitle:'How to sign in', g1t:'Open the App Store', g1d:'App Store only — not Settings.', g2t:'Tap your profile picture', g2d:'At the top of the App Store, tap the profile icon.', g3t:'Enter email & password', g3d:'Then get the OTP code from this page and type it in.', partA:'Sign in to App Store', partB:'Switch to your number', g4t:'Open Settings', g4d:'In Settings, tap your name (Apple ID) at the top.', g5t:'Sign-In & Security', g5d:'Open it, then choose Trusted Phone Numbers.', g6t:'Add your own number', g6d:'Under Trusted Phone Numbers, add your number and enter the SMS code, then delete the old number.',  copy:'Copy', copied:'Copied ✓',
         updateBtn:'Refresh', invalid:'This QR code is not valid or available', net:'Couldn’t connect. Check your internet.', error:'Error', thanks:'Thank you for your trust', modalBtn:'Got it, show details',
         warningTitle:'⚠ Important Warning', warningText:'Please do NOT sign in with this Apple ID in your phone Settings! Sign in via App Store only.<br><br>When signing in, please use your own mobile phone number directly.',
         supOpen:'Contact Support', supTitle:'Please select your issue:',
         opt1:'This Apple ID does not work', opt2:'Password or Email is incorrect', opt3:'I have another question / issue',
         supWait:'Please wait...', supDone:'✅ Request sent to support. It will be resolved soon.', supAlready:'Your request was already submitted.', supErr:'Failed to send, try again.',
-        customPlaceholder:'Write your question or issue here...', extraTitle:'More info', dobLabel:'Date of birth', phoneLabel:'Phone number', openStore:'Open the App Store', doneBtn:'✅ Done, thank you', doneSent:'Thanks! Recorded ✓' },
+        customPlaceholder:'Write your question or issue here...', extraTitle:'More info', dobLabel:'Date of birth', phoneLabel:'Phone number', openStore:'Open the App Store', doneBtn:'✅ Done, thank you', doneSent:'Thanks! Recorded ✓', listen:'Listen', watchAnim:'Watch animated guide 🎬' },
   fa: { dir:'rtl', code:'FA', title:'اطلاعات کارت', checking:'در حال بررسی…',
-        email:'Email', password:'Password', otpTitle:'کد تأیید (OTP)', otpWait:'برای دیدن کد، دکمهٔ به‌روزرسانی را بزنید...', otpNone:'کد هنوز نرسیده، چند ثانیه بعد دوباره به‌روزرسانی کنید.', otpSearch:'در انتظار کد...', guideTitle:'چگونه وارد شوم؟', g1t:'App Store را باز کنید', g1d:'فقط از App Store، نه از تنظیمات.', g2t:'روی عکس پروفایل بزنید', g2d:'در بالای App Store روی عکس پروفایل بزنید.', g3t:'ایمیل و رمز را وارد کنید', g3d:'سپس کد OTP را از این صفحه بگیرید و وارد کنید.', partA:'ورود به App Store', partB:'تغییر به شمارهٔ خودتان', g4t:'به account.apple.com بروید', g4d:'در Safari باز کنید و همان ایمیل و رمز و کد OTP را وارد کنید.', g5t:'Sign-In and Security', g5d:'این بخش را باز کنید، سپس Account Security را انتخاب کنید.', g6t:'شمارهٔ خود را اضافه کنید', g6d:'در Trusted Phone Numbers شمارهٔ خود را اضافه کنید و کد پیامک را وارد کنید، سپس شمارهٔ قدیمی را حذف کنید.', copy:'کپی', copied:'کپی شد ✓',
+        email:'Email', password:'Password', otpTitle:'کد تأیید (OTP)', otpWait:'برای دیدن کد، دکمهٔ به‌روزرسانی را بزنید...', otpNone:'کد هنوز نرسیده، چند ثانیه بعد دوباره به‌روزرسانی کنید.', otpSearch:'در انتظار کد...', guideTitle:'چگونه وارد شوم؟', g1t:'App Store را باز کنید', g1d:'فقط از App Store، نه از تنظیمات.', g2t:'روی عکس پروفایل بزنید', g2d:'در بالای App Store روی عکس پروفایل بزنید.', g3t:'ایمیل و رمز را وارد کنید', g3d:'سپس کد OTP را از این صفحه بگیرید و وارد کنید.', partA:'ورود به App Store', partB:'تغییر به شمارهٔ خودتان', g4t:'تنظیمات (Settings) را باز کنید', g4d:'در تنظیمات، بالای صفحه روی نام خود (Apple ID) بزنید.', g5t:'Sign-In & Security', g5d:'آن را باز کنید، سپس Trusted Phone Numbers را انتخاب کنید.', g6t:'شمارهٔ خود را اضافه کنید', g6d:'در Trusted Phone Numbers شمارهٔ خود را اضافه کنید و کد پیامک را وارد کنید، سپس شمارهٔ قدیمی را حذف کنید.', copy:'کپی', copied:'کپی شد ✓',
         updateBtn:'به‌روزرسانی', invalid:'این کد QR معتبر یا موجود نیست', net:'اتصال برقرار نشد. اینترنت را بررسی کنید.', error:'خطا', thanks:'از اعتماد شما سپاسگزاریم', modalBtn:'متوجه شدم، نمایش اطلاعات',
         warningTitle:'⚠️ هشدار مهم', warningText:'لطفاً این Apple ID را به هیچ وجه در تنظیمات گوشی (Settings) وارد نکنید! فقط در App Store وارد شوید.<br><br>هنگام ورود، لطفاً مستقیماً روی شمارهٔ موبایل خودتان قرار دهید.',
         supOpen:'تماس با پشتیبانی (Support)', supTitle:'لطفاً مشکل خود را مشخص کنید:',
         opt1:'این Apple ID کار نمی‌کند', opt2:'رمز یا ایمیل اشتباه است', opt3:'سؤال یا مشکل دیگری دارم',
         supWait:'لطفاً صبر کنید...', supDone:'✅ درخواست شما به پشتیبانی ارسال شد. به‌زودی حل می‌شود.', supAlready:'درخواست شما قبلاً ارسال شده است.', supErr:'ارسال نشد، دوباره تلاش کنید.',
-        customPlaceholder:'سؤال یا مشکل خود را اینجا بنویسید...', extraTitle:'اطلاعات بیشتر', dobLabel:'تاریخ تولد', phoneLabel:'شمارهٔ موبایل', openStore:'باز کردن App Store', doneBtn:'✅ انجام شد، ممنون', doneSent:'ممنون! ثبت شد ✓' }
+        customPlaceholder:'سؤال یا مشکل خود را اینجا بنویسید...', extraTitle:'اطلاعات بیشتر', dobLabel:'تاریخ تولد', phoneLabel:'شمارهٔ موبایل', openStore:'باز کردن App Store', doneBtn:'✅ انجام شد، ممنون', doneSent:'ممنون! ثبت شد ✓', listen:'گوش کن', watchAnim:'تماشای راهنمای متحرک 🎬' }
 };
 
 const store = { get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }, set(k, v){ try { localStorage.setItem(k, v); } catch(e){} } };
@@ -529,6 +622,7 @@ function selectInitialLang(selectedLang) {
   langSelectModal.style.display = 'none';
   updateTexts();
   warningModal.style.display = 'grid';
+  primeSpeech(); setTimeout(speakWarning, 350); // دەنگ لە کاتی دەستلێدان دەست پێ دەکات (مەرجی ئایفۆن)
 }
 
 if (lang) {
@@ -538,11 +632,17 @@ if (lang) {
 }
 
 closeModalBtn.onclick = () => {
+  try { if ('speechSynthesis' in window) speechSynthesis.cancel(); } catch(e) {}
+  synthOn = false;
   warningModal.style.display = 'none';
   loadData();
 };
+const warnListenBtn = document.getElementById('warnListen');
+if (warnListenBtn) { if (!('speechSynthesis' in window)) warnListenBtn.hidden = true; else warnListenBtn.onclick = speakWarning; }
+['simClose','simPrev','simNext','simPlay'].forEach(id => { const el = document.getElementById(id); if (el) el.onclick = { simClose: closeSim, simPrev: simPrev, simNext: simNext, simPlay: simToggle }[id]; });
+document.getElementById('simModal').addEventListener('click', e => { if (e.target.id === 'simModal') closeSim(); });
 
-const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const fmt = v => (typeof v === 'string' && /^\d{4}-\d{2}-\d{2}T/.test(v)) ? v.slice(0, 10) : v;
 
 const ICO_MAIL = '<span class="c-ico mail"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>';
@@ -556,6 +656,7 @@ function updateTexts() {
   closeModalBtn.textContent = t.modalBtn;
   document.getElementById('modalTitleText').textContent = t.warningTitle;
   document.getElementById('modalDescText').innerHTML = t.warningText;
+  const wl = document.getElementById('warnListenLabel'); if (wl) wl.textContent = t.listen;
   document.querySelectorAll('[data-t]').forEach(el => el.textContent = t[el.dataset.t]);
   document.querySelectorAll('[data-lang]').forEach(b => b.setAttribute('aria-checked', String(b.dataset.lang === lang)));
 }
@@ -563,6 +664,7 @@ function updateTexts() {
 function render(){
   const t = T[lang || 'ku'];
   updateTexts();
+  if ('speechSynthesis' in window) { try { speechSynthesis.cancel(); } catch(e) {} }
 
   if (state.kind === 'loading') {
     box.innerHTML = '<div class="skel"><div></div><div></div></div>';
@@ -631,8 +733,6 @@ function render(){
 
   html += '</div>';
 
-  html += `<a class="store-btn" href="itms-apps://apps.apple.com" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg><span>${t.openStore}</span></a>`;
-
   if (otpLink) {
     html += `
       <div class="otp-box" data-otp-url="${esc(otpLink)}">
@@ -642,7 +742,7 @@ function render(){
             <span>${t.otpTitle}</span>
           </div>
           <div class="otp-actions">
-            <span class="otp-timer" id="otpTimer" hidden><svg viewBox="0 0 36 36"><circle class="bgc" cx="18" cy="18" r="15"/><circle class="pc" cx="18" cy="18" r="15"/></svg><b>90</b></span>
+            <span class="otp-timer" id="otpTimer" hidden><svg viewBox="0 0 36 36"><circle class="bgc" cx="18" cy="18" r="15"/><circle class="pc" cx="18" cy="18" r="15"/></svg><b>30</b></span>
             <button class="update-btn" id="updateOtpBtn" type="button" title="Refresh">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
               <span>${t.updateBtn}</span>
@@ -684,7 +784,7 @@ function render(){
     `;
   }
 
-  html += `<button type="button" class="done-btn" id="doneBtn">${t.doneBtn}</button>`;
+  html += `<a class="store-btn" href="itms-apps://apps.apple.com" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg><span>${t.openStore}</span></a>`;
 
   box.innerHTML = html;
   celebrate();
@@ -694,7 +794,7 @@ function render(){
     if (updateBtnEl) {
       updateBtnEl.onclick = () => {
         updateBtnEl.classList.add('spinning');
-        startOtpPoll(otpLink);
+        getOtpOnce(otpLink);
         setTimeout(() => updateBtnEl.classList.remove('spinning'), 600);
       };
     }
@@ -727,8 +827,13 @@ function render(){
       </div>
       <p id="supportMsg" class="support-msg" style="display:none"></p>
     </div>
+    <button type="button" class="done-btn" id="doneBtn">${t.doneBtn}</button>
   `;
   initGuide();
+  const gListenBtn = document.getElementById('gListen');
+  if (gListenBtn) { if (!('speechSynthesis' in window)) gListenBtn.hidden = true; else gListenBtn.onclick = speakGuide; }
+  const simOpenBtn = document.getElementById('simOpen');
+  if (simOpenBtn) simOpenBtn.onclick = openSim;
 
   box.querySelectorAll('.copy[data-v]').forEach(b => b.onclick = () => {
     const done = () => { b.textContent = t.copied; b.classList.add('done'); setTimeout(() => { b.textContent = t.copy; b.classList.remove('done'); }, 1600); };
@@ -749,43 +854,144 @@ function render(){
   };
 }
 
-let demoTicks = 0, pollTimer = null, pollClock = null, pollUntil = 0;
-const POLL_MS = 90000;
-function startOtpPoll(url){
-  clearTimeout(pollTimer); clearInterval(pollClock);
-  pollUntil = Date.now() + POLL_MS;
-  const tm = document.getElementById('otpTimer');
-  const paint = () => { if (!tm) return; const left = Math.max(0, Math.ceil((pollUntil - Date.now()) / 1000));
-    tm.hidden = left <= 0; tm.style.setProperty('--p', left / (POLL_MS / 1000)); tm.querySelector('b').textContent = left; if (left <= 0) clearInterval(pollClock); };
-  paint(); pollClock = setInterval(paint, 1000);
-  const loop = async () => {
+// کۆد خۆکارانە و بە خێرایی دەگەڕێت: هەر ٢ چرکە تاقی دەکاتەوە تا دەیدۆزێتەوە (بۆ ٢٥ چرکە)
+let otpTimerInt = null, otpSearchTimer = null;
+async function getOtpOnce(url){
+  clearInterval(otpTimerInt); clearTimeout(otpSearchTimer);
+  const row = document.getElementById('otpRow');
+  if (row && !row.querySelector('.otp-digits')) row.innerHTML = `<div class="otp-search"><i></i><i></i><i></i><span>${T[lang || 'ku'].otpSearch}</span></div>`;
+  const deadline = Date.now() + 25000;
+  const attempt = async () => {
     if (!document.getElementById('otpRow')) return;
     const c = await fetchOtp(url, true);
-    if (Date.now() < pollUntil) pollTimer = setTimeout(loop, 4000);
-    else if (!c) { const row = document.getElementById('otpRow'); if (row && !row.querySelector('.otp-digits')) row.innerHTML = `<div class="otp-empty">${T[lang || 'ku'].otpNone}</div>`; }
+    if (c) { startOtpCountdown(30); return; }
+    if (Date.now() < deadline) otpSearchTimer = setTimeout(attempt, 2000);
+    else { const r = document.getElementById('otpRow'); if (r && !r.querySelector('.otp-digits')) r.innerHTML = `<div class="otp-empty">${T[lang || 'ku'].otpNone}</div>`; }
   };
-  loop();
+  attempt();
+}
+function startOtpCountdown(total){
+  clearInterval(otpTimerInt);
+  const tm = document.getElementById('otpTimer');
+  let left = total;
+  const paint = () => { if (!tm) return; tm.hidden = left <= 0; tm.style.setProperty('--p', left / total); tm.querySelector('b').textContent = left; };
+  paint();
+  otpTimerInt = setInterval(() => {
+    left--; paint();
+    if (left <= 0) {
+      clearInterval(otpTimerInt);
+      lastDetectedOtp = '';
+      const r = document.getElementById('otpRow');
+      if (r) r.innerHTML = `<div class="otp-empty">${T[lang || 'ku'].otpWait}</div>`;
+      if (tm) tm.hidden = true;
+    }
+  }, 1000);
 }
 
 const PHONES = {
   1: '<div class="scr"><div class="apps"><i></i><i></i><i></i><i></i><i class="as"></i><i></i><i></i><i></i><i></i></div></div><span class="tap" style="left:35px;top:62px"></span>',
   2: '<div class="scr"><div class="as-top"><b>Today</b><span class="av"></span></div><div class="as-card"></div><div class="as-card c2"></div><div class="as-card c3"></div></div><span class="tap" style="right:5px;top:15px"></span>',
   3: '<div class="scr"><span class="ap"></span><span class="ttl">Apple Account</span><div class="inp"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="inp i2"><i></i><i></i><i></i><i></i></div><div class="sbtn"></div></div><span class="tap" style="left:35px;top:118px;animation-delay:1.8s"></span>',
-  4: '<div class="scr web"><div class="url">account.apple.com</div><span class="ap"></span><div class="inp"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="inp i2"><i></i><i></i><i></i><i></i></div><div class="sbtn"></div></div><span class="tap" style="left:35px;top:122px;animation-delay:1.8s"></span>',
-  5: '<div class="scr web"><div class="url">account.apple.com</div><div class="mrow"></div><div class="mrow hl">Sign-In and Security</div><div class="mrow"></div><div class="mrow sub">Account Security</div><div class="mrow"></div></div><span class="tap" style="left:35px;top:52px"></span>',
+  4: '<div class="scr web"><div class="url">Settings</div><div class="mrow hl">Apple ID · Name</div><div class="mrow"></div><div class="mrow"></div><div class="mrow"></div></div><span class="tap" style="left:35px;top:30px"></span>',
+  5: '<div class="scr web"><div class="url">Apple Account</div><div class="mrow"></div><div class="mrow hl">Sign-In & Security</div><div class="mrow sub">Trusted Phone Numbers</div><div class="mrow"></div></div><span class="tap" style="left:35px;top:52px"></span>',
   6: '<div class="scr web"><div class="url">Trusted Numbers</div><div class="num old"><i>−</i>+964 ••• 08</div><div class="num new"><i>+</i>+964 750 •••</div><div class="sms"><b></b><b></b><b></b><b></b><b></b><b></b></div></div><span class="tap" style="left:35px;top:66px"></span>'
 };
 function guideHTML(t){
-  const steps = [1,2,3,4,5,6];
-  return `<section class="guide"><div class="guide-h"><b>${t.guideTitle}</b><span>6 STEPS</span></div>
-    <div class="g-track" id="gTrack">${steps.map(n => `<article class="g-card"><div class="phone p${n}">${PHONES[n]}</div>
-      <div class="g-txt"><span class="g-part ${n > 3 ? 'b' : 'a'}">${n > 3 ? t.partB : t.partA}</span><em>${n}</em><b>${t['g'+n+'t']}</b><p>${t['g'+n+'d']}</p></div></article>`).join('')}</div>
-    <div class="g-dots" id="gDots">${steps.map((n, i) => `<i class="${i ? '' : 'on'}${n > 3 ? ' b' : ''}"></i>`).join('')}</div></section>`;
+  return `<section class="guide"><div class="guide-h"><b>${t.guideTitle}</b></div>
+    <button type="button" class="sim-btn-open" id="simOpen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4M10 8l5 3-5 3V8z"/></svg><span>${t.watchAnim}</span></button></section>`;
 }
 function initGuide(){
   const tr = document.getElementById('gTrack'), dots = document.querySelectorAll('#gDots i');
   if (!tr) return;
   tr.addEventListener('scroll', () => { const i = Math.round(Math.abs(tr.scrollLeft) / tr.clientWidth); dots.forEach((d, k) => d.classList.toggle('on', k === i)); }, { passive: true });
+}
+
+// خوێندنەوەی ڕێبەری بە دەنگ (Text-to-Speech) بە زمانی هەڵبژێردراو
+// سیستەمی دەنگ: کوردی دەنگی تایبەتی نییە لە بڕاوزەردا، بۆیە دەنگی عەرەبی بەکاردەهێنین (نزیکترینە بۆ سۆرانی)
+let VOICES = [], synthOn = false;
+function loadVoices(){ try { VOICES = speechSynthesis.getVoices() || []; } catch(e) { VOICES = []; } }
+if ('speechSynthesis' in window) { loadVoices(); try { speechSynthesis.addEventListener('voiceschanged', loadVoices); } catch(e) {} }
+let primed = false;
+function primeSpeech(){ if (primed || !('speechSynthesis' in window)) return; primed = true; try { const u = new SpeechSynthesisUtterance(' '); u.volume = 0; speechSynthesis.speak(u); } catch(e) {} loadVoices(); }
+function pickVoice(l){
+  const want = { ku: ['ckb','ku','ar'], ar: ['ar'], en: ['en'], fa: ['fa','ar'] }[l] || ['en'];
+  if (!VOICES.length) loadVoices();
+  for (const code of want) { const v = VOICES.find(x => x.lang && x.lang.toLowerCase().startsWith(code)); if (v) return { lang: v.lang, voice: v }; }
+  const fb = { ku: 'ar-SA', ar: 'ar-SA', en: 'en-US', fa: 'fa-IR' }[l] || 'en-US';
+  return { lang: fb, voice: null };
+}
+function sayNow(text){
+  if (!('speechSynthesis' in window)) return;
+  const pv = pickVoice(lang);
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = pv.lang; if (pv.voice) u.voice = pv.voice; u.rate = 0.92;
+  try { speechSynthesis.cancel(); } catch(e) {}
+  try { speechSynthesis.speak(u); } catch(e) {}
+}
+function speakToggle(text, btn){
+  if (!('speechSynthesis' in window)) return;
+  if (speechSynthesis.speaking || synthOn) { try { speechSynthesis.cancel(); } catch(e) {} synthOn = false; if (btn) btn.classList.remove('on'); return; }
+  const pv = pickVoice(lang);
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = pv.lang; if (pv.voice) u.voice = pv.voice; u.rate = 0.92;
+  u.onend = u.onerror = () => { synthOn = false; if (btn) btn.classList.remove('on'); };
+  synthOn = true; if (btn) btn.classList.add('on');
+  try { speechSynthesis.cancel(); } catch(e) {}
+  speechSynthesis.speak(u);
+}
+function speakGuide(){
+  const tr = document.getElementById('gTrack');
+  const idx = tr ? Math.round(Math.abs(tr.scrollLeft) / tr.clientWidth) : 0;
+  const n = [1,2,3,4,5,6][idx] || 1;
+  const t = T[lang || 'ku'];
+  speakToggle(t['g'+n+'t'] + '. ' + t['g'+n+'d'], document.getElementById('gListen'));
+}
+
+// خوێندنەوەی ئاگادارییەکە بە دەنگ
+function warningPlain(){
+  const t = T[lang || 'ku'];
+  return (t.warningTitle + '. ' + t.warningText).replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, ' ').replace(/[⚠✅️]/g, ' ').replace(/\s+/g, ' ').trim();
+}
+function speakWarning(){ speakToggle(warningPlain(), document.getElementById('warnListen')); }
+// ===== ڕێبەری ئەنیمەیشنی زیندوو (Simulator) =====
+const SIM_POS = [ {x:37,y:50}, {x:86,y:13}, {x:50,y:72}, {x:50,y:20}, {x:50,y:40}, {x:50,y:34} ];
+function simScreen(i){
+  switch(i){
+    case 0: return `<div class="ios ios-home"><i></i><i></i><i></i><i></i><i></i><i class="as"></i><i></i><i></i><i></i><i></i><i></i><i></i></div>`;
+    case 1: return `<div class="ios ios-white"><div class="ios-top"><b>Today</b><span class="ios-av"></span></div><div class="ios-card"></div><div class="ios-card c2"></div><div class="ios-card c2"></div></div>`;
+    case 2: return `<div class="ios ios-white"><div class="ios-logo"></div><div class="ios-ttl">Apple Account</div><div class="ios-inp"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="ios-inp"><i></i><i></i><i></i><i></i></div><div class="ios-go">Sign In</div></div>`;
+    case 3: return `<div class="ios ios-white"><div class="ios-search"></div><div class="ios-row hl"><span>Apple ID · Name</span><span class="chev">›</span></div><div class="ios-row"><span>Airplane Mode</span><span class="chev">›</span></div><div class="ios-row"><span>Wi‑Fi</span><span class="chev">›</span></div></div>`;
+    case 4: return `<div class="ios ios-white"><div class="ios-ttl">Apple Account</div><div class="ios-row"><span>Personal Info</span><span class="chev">›</span></div><div class="ios-row hl"><span>Sign‑In &amp; Security</span><span class="chev">›</span></div><div class="ios-row"><span>Payment</span><span class="chev">›</span></div></div>`;
+    default: return `<div class="ios ios-white"><div class="ios-ttl">Trusted Phone Numbers</div><div class="ios-num old"><span class="mk">−</span>+964 ••• ••08</div><div class="ios-num new"><span class="mk">+</span>+964 750 •••</div><div class="ios-otp"><b></b><b></b><b></b><b></b><b></b><b></b></div></div>`;
+  }
+}
+let simI = 0, simPlay = false, simTimer = null;
+function openSim(){ simI = 0; simPlay = true; const m = document.getElementById('simModal'); if (m) { m.classList.add('on'); document.getElementById('simTitle').textContent = T[lang || 'ku'].guideTitle; renderSim(); } }
+function closeSim(){ simPlay = false; clearTimeout(simTimer); if ('speechSynthesis' in window) { try { speechSynthesis.cancel(); } catch(e) {} } const m = document.getElementById('simModal'); if (m) m.classList.remove('on'); }
+function renderSim(){
+  const t = T[lang || 'ku'], n = simI + 1, p = SIM_POS[simI];
+  const ph = document.getElementById('simScreen');
+  if (!ph) return;
+  ph.innerHTML = simScreen(simI) +
+    `<span class="sim-tap" style="left:${p.x}%;top:${p.y}%"></span><span class="sim-hand" style="left:${p.x}%;top:${p.y}%">👆</span>`;
+  document.getElementById('simCap').innerHTML = `<em>${n}</em><b>${esc(t['g'+n+'t'])}</b><p>${esc(t['g'+n+'d'])}</p>`;
+  document.querySelectorAll('#simDots i').forEach((d, k) => d.classList.toggle('on', k === simI));
+  document.getElementById('simPlayIcon').textContent = simPlay ? '⏸' : (simI >= 5 ? '↻' : '▶');
+  if (simPlay) sayNow(t['g'+n+'t'] + '. ' + t['g'+n+'d']);
+  clearTimeout(simTimer);
+  if (simPlay) simTimer = setTimeout(() => { if (simI < 5) { simI++; renderSim(); } else { simPlay = false; renderSim(); } }, 5200);
+}
+function simNext(){ if (simI < 5) { simI++; renderSim(); } }
+function simPrev(){ if (simI > 0) { simI--; renderSim(); } }
+function simToggle(){ if (simI >= 5 && !simPlay) simI = 0; simPlay = !simPlay; renderSim(); }
+
+// دۆزینەوەی کۆد: سەرەتا ٦ ژمارەیی (کۆدی ڕاستەقینەی Apple)، ئینجا ٤-٨ ژمارەیی
+function extractCode(text){
+  if (!text) return '';
+  const six = String(text).match(/\b\d{6}\b/);
+  if (six) return six[0];
+  const any = String(text).match(/\b\d{4,8}\b/);
+  return any ? any[0] : '';
 }
 async function fetchOtp(url, isManual = false) {
   const row = document.getElementById('otpRow');
@@ -794,8 +1000,8 @@ async function fetchOtp(url, isManual = false) {
   try {
     let codeVal = '';
     if (DEMO) {
-      demoTicks++;
-      codeVal = demoTicks < 3 ? '' : (lastDetectedOtp || String(Math.floor(100000 + Math.random() * 900000)));
+      await new Promise(r => setTimeout(r, 400));
+      codeVal = String(Math.floor(100000 + Math.random() * 900000));
     } else {
       // ١) سێرڤەر لینکەکە دەخوێنێتەوە (هەموو جۆرە لینکێک، تەنانەت http)
       try {
@@ -808,33 +1014,26 @@ async function fetchOtp(url, isManual = false) {
       if (!codeVal) {
         try {
           const text = await fetch(url, { cache: 'no-store' }).then(res => res.text());
-          const m = text.match(/\b\d{4,8}\b/);
-          if (m) codeVal = m[0];
-          else {
-            const doc = new DOMParser().parseFromString(text, 'text/html');
-            const m2 = (doc.body ? doc.body.textContent : text).match(/\b\d{4,8}\b/);
-            if (m2) codeVal = m2[0];
-          }
+          codeVal = extractCode(text);
+          if (!codeVal) { const doc = new DOMParser().parseFromString(text, 'text/html'); codeVal = extractCode(doc.body ? doc.body.textContent : text); }
         } catch(e) {}
       }
     }
 
     if (codeVal) {
       const isNew = codeVal !== lastDetectedOtp;
-      if (isNew && lastDetectedOtp !== '') playNotificationSound();
-      if (isNew) { try { navigator.vibrate && navigator.vibrate([30, 40, 30]); } catch(e) {} }
       lastDetectedOtp = codeVal;
       if (isNew || !row.querySelector('.otp-digits')) {
         row.innerHTML = `<div class="otp-digits">${codeVal.split('').map((d, i) => `<span style="--i:${i}">${esc(d)}</span>`).join('')}</div>
           <button class="copy" type="button" data-v="${esc(codeVal)}">${t.copy}</button>`;
         row.classList.remove('got'); void row.offsetWidth; row.classList.add('got');
+        playNotificationSound();
+        try { navigator.vibrate && navigator.vibrate([30, 40, 30]); } catch(e) {}
         row.querySelector('.copy').onclick = function() {
           const b = this;
           const done = () => { b.textContent = t.copied; b.classList.add('done'); setTimeout(() => { b.textContent = t.copy; b.classList.remove('done'); }, 1600); };
           if (navigator.clipboard) navigator.clipboard.writeText(b.dataset.v).then(done).catch(() => {});
         };
-        // کۆپیی خۆکار کاتێک کۆدی نوێ دێت
-        if (isNew) { const ab = row.querySelector('.copy'); try { if (navigator.clipboard) navigator.clipboard.writeText(codeVal).then(() => { ab.textContent = t.copied; ab.classList.add('done'); setTimeout(() => { ab.textContent = t.copy; ab.classList.remove('done'); }, 1600); }).catch(() => {}); } catch(e) {} }
       }
     } else if (!row.querySelector('.otp-digits')) {
       row.innerHTML = `<div class="otp-search"><i></i><i></i><i></i><span>${t.otpSearch}</span></div>`;

@@ -276,6 +276,18 @@ html[dir="rtl"] .support-option-btn svg{transform:scaleX(-1)}
 .sms{display:flex;gap:3px;margin-top:4px}
 .sms b{width:9px;height:12px;border-radius:3px;background:#fff;border:1px solid #d1d5db;animation:typ 2.4s steps(1) infinite}
 .sms b:nth-child(2){animation-delay:.2s}.sms b:nth-child(3){animation-delay:.4s}.sms b:nth-child(4){animation-delay:.6s}.sms b:nth-child(5){animation-delay:.8s}.sms b:nth-child(6){animation-delay:1s}
+
+/* ===== v4: open App Store + done ===== */
+.store-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;border-radius:16px;text-decoration:none;
+  font-weight:800;font-size:.95rem;color:#fff;background:linear-gradient(135deg,#2563eb,#1e40af);border:1px solid rgba(91,147,255,.5);
+  box-shadow:0 12px 26px -12px rgba(37,99,235,.9);transition:transform .15s}
+.store-btn svg{width:20px;height:20px}
+.store-btn:active{transform:scale(.98)}
+.done-btn{width:100%;padding:14px;border-radius:16px;border:1px solid rgba(16,185,129,.5);
+  background:linear-gradient(135deg,rgba(16,185,129,.92),#059669);color:#fff;font-weight:900;font-size:.98rem;cursor:pointer;
+  box-shadow:0 12px 26px -12px rgba(16,185,129,.9);transition:all .2s}
+.done-btn:disabled{opacity:.9;cursor:default}
+.done-btn.ok{background:linear-gradient(135deg,#34d399,#10b981)}
 </style>
 <!--HEAD-END-->
 </head>
@@ -316,6 +328,7 @@ html[dir="rtl"] .support-option-btn svg{transform:scaleX(-1)}
         <button class="lang-option-btn" type="button" onclick="selectInitialLang('ku')">کوردی (Kurdish)</button>
         <button class="lang-option-btn" type="button" onclick="selectInitialLang('ar')">العربية (Arabic)</button>
         <button class="lang-option-btn" type="button" onclick="selectInitialLang('en')">English</button>
+        <button class="lang-option-btn" type="button" onclick="selectInitialLang('fa')">فارسی (Persian)</button>
       </div>
     </div>
   </div>
@@ -370,6 +383,7 @@ html[dir="rtl"] .support-option-btn svg{transform:scaleX(-1)}
         <button type="button" role="menuitemradio" data-lang="ku">کوردی</button>
         <button type="button" role="menuitemradio" data-lang="ar">العربية</button>
         <button type="button" role="menuitemradio" data-lang="en">English</button>
+        <button type="button" role="menuitemradio" data-lang="fa">فارسی</button>
       </div>
     </div>
   </header>
@@ -442,7 +456,7 @@ const T = {
         supOpen:'پەیوەندی بە سەپۆرت (Support)', supTitle:'تکایە کێشەکەت دیاری بکە:',
         opt1:'ئەم Apple ID کار ناکات', opt2:'پاسۆرد یان ئیمەیڵ هەڵەیە', opt3:'پرسیارێکی تری هەیە / کێشەی تر',
         supWait:'چاوەڕێ بکە...', supDone:'✅ داواکارییەکەت نێردرا بۆ سەپۆرت. بە زوویی چارەسەر دەکرێت.', supAlready:'داواکارییەکەت پێشتر نێردراوە.', supErr:'نەنێردرا، دووبارە هەوڵ بدەرەوە.',
-        customPlaceholder:'پرسیار یان کێشەکەت لێرە بنووسە...' },
+        customPlaceholder:'پرسیار یان کێشەکەت لێرە بنووسە...', extraTitle:'زانیاری زیاتر', dobLabel:'بەرواری لەدایکبوون', phoneLabel:'ژمارەی مۆبایل', openStore:'کردنەوەی App Store', doneBtn:'✅ تەواو بوو، سوپاس', doneSent:'سوپاس! تۆمارکرا ✓' },
   ar: { dir:'rtl', code:'AR', title:'معلومات البطاقة', checking:'جارٍ التحقق…',
         email:'Email', password:'Password', otpTitle:'رمز التحقق (OTP)', otpWait:'لإظهار الرمز، اضغط على زر التحديث...', otpNone:'لم يصل الرمز بعد، حدّث مرة أخرى بعد ثوانٍ.', otpSearch:'بانتظار الرمز...', guideTitle:'كيف أسجّل الدخول؟', g1t:'افتح App Store', g1d:'من App Store فقط، وليس من الإعدادات.', g2t:'اضغط على صورة الحساب', g2d:'في أعلى App Store اضغط على صورة الملف الشخصي.', g3t:'أدخل البريد وكلمة المرور', g3d:'ثم خذ رمز OTP من هذه الصفحة وأدخله.', partA:'الدخول إلى App Store', partB:'التحويل إلى رقمك', g4t:'افتح account.apple.com', g4d:'من Safari أدخل نفس البريد وكلمة المرور ورمز OTP.', g5t:'Sign-In and Security', g5d:'افتح هذا القسم ثم اختر Account Security.', g6t:'أضف رقمك', g6d:'في Trusted Phone Numbers أضف رقمك وأدخل رمز SMS، ثم احذف الرقم القديم.',  copy:'نسخ', copied:'تم النسخ ✓',
         updateBtn:'تحديث', invalid:'رمز QR هذا غير صالح أو غير موجود', net:'تعذّر الاتصال. تحقّق من الإنترنت.', error:'خطأ', thanks:'شكراً لثقَتِك', modalBtn:'فهمت، عرض المعلومات',
@@ -450,7 +464,7 @@ const T = {
         supOpen:'الاتصال بالدعم (Support)', supTitle:'يرجى تحديد مشكلتك:',
         opt1:'هذا Apple ID لا يعمل', opt2:'كلمة المرور أو البريد خطأ', opt3:'دي سؤال آخر / مشكلة أخرى',
         supWait:'جاري الانتظار...', supDone:'✅ تم إرسال طلبك إلى الدعم. سيتم الحل قريباً.', supAlready:'تم إرسال طلبك مسبقاً.', supErr:'فشل الإرسال، حاول مجدداً.',
-        customPlaceholder:'اكتب سؤالك أو مشكلتك هنا...' },
+        customPlaceholder:'اكتب سؤالك أو مشكلتك هنا...', extraTitle:'معلومات إضافية', dobLabel:'تاريخ الميلاد', phoneLabel:'رقم الهاتف', openStore:'فتح App Store', doneBtn:'✅ تم بنجاح، شكراً', doneSent:'شكراً! تم التسجيل ✓' },
   en: { dir:'ltr', code:'EN', title:'Card details', checking:'Verifying…',
         email:'Email', password:'Password', otpTitle:'Verification Code (OTP)', otpWait:'To see the code, click the update button...', otpNone:'No code yet — refresh again in a few seconds.', otpSearch:'Waiting for the code...', guideTitle:'How to sign in', g1t:'Open the App Store', g1d:'App Store only — not Settings.', g2t:'Tap your profile picture', g2d:'At the top of the App Store, tap the profile icon.', g3t:'Enter email & password', g3d:'Then get the OTP code from this page and type it in.', partA:'Sign in to App Store', partB:'Switch to your number', g4t:'Go to account.apple.com', g4d:'Open it in Safari and sign in with the same email, password and OTP code.', g5t:'Sign-In and Security', g5d:'Open this section, then choose Account Security.', g6t:'Add your own number', g6d:'Under Trusted Phone Numbers, add your number and enter the SMS code, then delete the old number.',  copy:'Copy', copied:'Copied ✓',
         updateBtn:'Refresh', invalid:'This QR code is not valid or available', net:'Couldn’t connect. Check your internet.', error:'Error', thanks:'Thank you for your trust', modalBtn:'Got it, show details',
@@ -458,7 +472,15 @@ const T = {
         supOpen:'Contact Support', supTitle:'Please select your issue:',
         opt1:'This Apple ID does not work', opt2:'Password or Email is incorrect', opt3:'I have another question / issue',
         supWait:'Please wait...', supDone:'✅ Request sent to support. It will be resolved soon.', supAlready:'Your request was already submitted.', supErr:'Failed to send, try again.',
-        customPlaceholder:'Write your question or issue here...' }
+        customPlaceholder:'Write your question or issue here...', extraTitle:'More info', dobLabel:'Date of birth', phoneLabel:'Phone number', openStore:'Open the App Store', doneBtn:'✅ Done, thank you', doneSent:'Thanks! Recorded ✓' },
+  fa: { dir:'rtl', code:'FA', title:'اطلاعات کارت', checking:'در حال بررسی…',
+        email:'Email', password:'Password', otpTitle:'کد تأیید (OTP)', otpWait:'برای دیدن کد، دکمهٔ به‌روزرسانی را بزنید...', otpNone:'کد هنوز نرسیده، چند ثانیه بعد دوباره به‌روزرسانی کنید.', otpSearch:'در انتظار کد...', guideTitle:'چگونه وارد شوم؟', g1t:'App Store را باز کنید', g1d:'فقط از App Store، نه از تنظیمات.', g2t:'روی عکس پروفایل بزنید', g2d:'در بالای App Store روی عکس پروفایل بزنید.', g3t:'ایمیل و رمز را وارد کنید', g3d:'سپس کد OTP را از این صفحه بگیرید و وارد کنید.', partA:'ورود به App Store', partB:'تغییر به شمارهٔ خودتان', g4t:'به account.apple.com بروید', g4d:'در Safari باز کنید و همان ایمیل و رمز و کد OTP را وارد کنید.', g5t:'Sign-In and Security', g5d:'این بخش را باز کنید، سپس Account Security را انتخاب کنید.', g6t:'شمارهٔ خود را اضافه کنید', g6d:'در Trusted Phone Numbers شمارهٔ خود را اضافه کنید و کد پیامک را وارد کنید، سپس شمارهٔ قدیمی را حذف کنید.', copy:'کپی', copied:'کپی شد ✓',
+        updateBtn:'به‌روزرسانی', invalid:'این کد QR معتبر یا موجود نیست', net:'اتصال برقرار نشد. اینترنت را بررسی کنید.', error:'خطا', thanks:'از اعتماد شما سپاسگزاریم', modalBtn:'متوجه شدم، نمایش اطلاعات',
+        warningTitle:'⚠️ هشدار مهم', warningText:'لطفاً این Apple ID را به هیچ وجه در تنظیمات گوشی (Settings) وارد نکنید! فقط در App Store وارد شوید.<br><br>هنگام ورود، لطفاً مستقیماً روی شمارهٔ موبایل خودتان قرار دهید.',
+        supOpen:'تماس با پشتیبانی (Support)', supTitle:'لطفاً مشکل خود را مشخص کنید:',
+        opt1:'این Apple ID کار نمی‌کند', opt2:'رمز یا ایمیل اشتباه است', opt3:'سؤال یا مشکل دیگری دارم',
+        supWait:'لطفاً صبر کنید...', supDone:'✅ درخواست شما به پشتیبانی ارسال شد. به‌زودی حل می‌شود.', supAlready:'درخواست شما قبلاً ارسال شده است.', supErr:'ارسال نشد، دوباره تلاش کنید.',
+        customPlaceholder:'سؤال یا مشکل خود را اینجا بنویسید...', extraTitle:'اطلاعات بیشتر', dobLabel:'تاریخ تولد', phoneLabel:'شمارهٔ موبایل', openStore:'باز کردن App Store', doneBtn:'✅ انجام شد، ممنون', doneSent:'ممنون! ثبت شد ✓' }
 };
 
 const store = { get(k){ try { return localStorage.getItem(k); } catch(e){ return null; } }, set(k, v){ try { localStorage.setItem(k, v); } catch(e){} } };
@@ -609,6 +631,8 @@ function render(){
 
   html += '</div>';
 
+  html += `<a class="store-btn" href="itms-apps://apps.apple.com" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg><span>${t.openStore}</span></a>`;
+
   if (otpLink) {
     html += `
       <div class="otp-box" data-otp-url="${esc(otpLink)}">
@@ -625,7 +649,7 @@ function render(){
             </button>
           </div>
         </div>
-        <div class="otp-row" id="otpRow">
+        <div class="otp-row" id="otpRow" aria-live="polite">
           <div class="otp-empty">${t.otpWait}</div>
         </div>
       </div>
@@ -635,13 +659,13 @@ function render(){
   if (extra3Val || extra4Val) {
     html += `
       <div class="extra-box">
-        <div class="extra-title">زانیاری زیاتری کارت (Extra Info)</div>
+        <div class="extra-title">${t.extraTitle}</div>
         <div class="extra-grid">
     `;
     if (extra3Val) {
       html += `
           <div class="extra-item">
-            <div class="extra-label">Info 3</div>
+            <div class="extra-label">${t.dobLabel}</div>
             <div class="extra-val">${esc(fmt(extra3Val))}</div>
           </div>
       `;
@@ -649,7 +673,7 @@ function render(){
     if (extra4Val) {
       html += `
           <div class="extra-item">
-            <div class="extra-label">Info 4</div>
+            <div class="extra-label">${t.phoneLabel}</div>
             <div class="extra-val">${esc(fmt(extra4Val))}</div>
           </div>
       `;
@@ -659,6 +683,8 @@ function render(){
       </div>
     `;
   }
+
+  html += `<button type="button" class="done-btn" id="doneBtn">${t.doneBtn}</button>`;
 
   box.innerHTML = html;
   celebrate();
@@ -708,6 +734,19 @@ function render(){
     const done = () => { b.textContent = t.copied; b.classList.add('done'); setTimeout(() => { b.textContent = t.copy; b.classList.remove('done'); }, 1600); };
     if (navigator.clipboard) navigator.clipboard.writeText(b.dataset.v).then(done).catch(() => {});
   });
+
+  const doneBtnEl = document.getElementById('doneBtn');
+  if (doneBtnEl) doneBtnEl.onclick = async () => {
+    doneBtnEl.disabled = true;
+    try {
+      if (!DEMO) await fetch(REPORT_API, { method: 'POST',
+        headers: { 'Content-Type': 'application/json', apikey: KEY, Authorization: 'Bearer ' + KEY },
+        body: JSON.stringify({ p_code: code, p_note: '✅ DONE: کڕیار بە سەرکەوتوویی تەواو بوو' }) });
+    } catch(e) {}
+    doneBtnEl.textContent = T[lang || 'ku'].doneSent;
+    doneBtnEl.classList.add('ok');
+    celebrated = false; celebrate();
+  };
 }
 
 let demoTicks = 0, pollTimer = null, pollClock = null, pollUntil = 0;
@@ -737,10 +776,10 @@ const PHONES = {
   6: '<div class="scr web"><div class="url">Trusted Numbers</div><div class="num old"><i>−</i>+964 ••• 08</div><div class="num new"><i>+</i>+964 750 •••</div><div class="sms"><b></b><b></b><b></b><b></b><b></b><b></b></div></div><span class="tap" style="left:35px;top:66px"></span>'
 };
 function guideHTML(t){
-  const steps = [1,2,3];
-  return `<section class="guide"><div class="guide-h"><b>${t.guideTitle}</b><span>3 STEPS</span></div>
+  const steps = [1,2,3,4,5,6];
+  return `<section class="guide"><div class="guide-h"><b>${t.guideTitle}</b><span>6 STEPS</span></div>
     <div class="g-track" id="gTrack">${steps.map(n => `<article class="g-card"><div class="phone p${n}">${PHONES[n]}</div>
-      <div class="g-txt"><em>${n}</em><b>${t['g'+n+'t']}</b><p>${t['g'+n+'d']}</p></div></article>`).join('')}</div>
+      <div class="g-txt"><span class="g-part ${n > 3 ? 'b' : 'a'}">${n > 3 ? t.partB : t.partA}</span><em>${n}</em><b>${t['g'+n+'t']}</b><p>${t['g'+n+'d']}</p></div></article>`).join('')}</div>
     <div class="g-dots" id="gDots">${steps.map((n, i) => `<i class="${i ? '' : 'on'}${n > 3 ? ' b' : ''}"></i>`).join('')}</div></section>`;
 }
 function initGuide(){
@@ -794,6 +833,8 @@ async function fetchOtp(url, isManual = false) {
           const done = () => { b.textContent = t.copied; b.classList.add('done'); setTimeout(() => { b.textContent = t.copy; b.classList.remove('done'); }, 1600); };
           if (navigator.clipboard) navigator.clipboard.writeText(b.dataset.v).then(done).catch(() => {});
         };
+        // کۆپیی خۆکار کاتێک کۆدی نوێ دێت
+        if (isNew) { const ab = row.querySelector('.copy'); try { if (navigator.clipboard) navigator.clipboard.writeText(codeVal).then(() => { ab.textContent = t.copied; ab.classList.add('done'); setTimeout(() => { ab.textContent = t.copy; ab.classList.remove('done'); }, 1600); }).catch(() => {}); } catch(e) {} }
       }
     } else if (!row.querySelector('.otp-digits')) {
       row.innerHTML = `<div class="otp-search"><i></i><i></i><i></i><span>${t.otpSearch}</span></div>`;

@@ -365,6 +365,39 @@ html[dir="rtl"] .support-option-btn svg{transform:scaleX(-1)}
   box-shadow:0 12px 26px -12px rgba(16,185,129,.9);transition:all .2s}
 .done-btn:disabled{opacity:.9;cursor:default}
 .done-btn.ok{background:linear-gradient(135deg,#34d399,#10b981)}
+
+/* ===== v6: mode picker + easy wizard ===== */
+.mode-opt{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--ink);padding:16px;border-radius:16px;cursor:pointer;text-align:start;transition:all .2s;width:100%;font:inherit}
+.mode-opt:hover{background:linear-gradient(135deg,rgba(247,201,72,.16),rgba(91,147,255,.16));border-color:rgba(247,201,72,.5)}
+.mode-opt .ic{font-size:1.7rem;flex:none}
+.mode-opt .tx{display:grid;gap:2px}
+.mode-opt .tx b{font-weight:900;font-size:1rem}
+.mode-opt .tx span{font-size:.78rem;color:var(--muted)}
+.easy-overlay{position:fixed;inset:0;z-index:1300;background:rgba(3,6,16,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);display:none;overflow:auto}
+.easy-overlay.on{display:block;animation:fadeIn .25s ease}
+.easy-wrap{max-width:440px;margin:0 auto;min-height:100%;padding:max(16px,env(safe-area-inset-top)) 16px max(24px,env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px}
+.easy-top{display:flex;align-items:center;gap:10px;padding-top:4px}
+.easy-top .tk{flex:1;height:9px;border-radius:99px;background:rgba(255,255,255,.12);overflow:hidden}
+.easy-top .tk i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--blue));transition:width .35s}
+.easy-top .sc{font-family:var(--f-en);font-size:.8rem;color:var(--muted)}
+.easy-top .x{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer}
+.easy-card{flex:1;background:var(--card);border:1px solid var(--line);border-radius:26px;padding:24px 18px;display:grid;gap:16px;justify-items:center;text-align:center;align-content:center;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);position:relative;isolation:isolate}
+.easy-card::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1.5px;z-index:-1;background:linear-gradient(120deg,var(--gold),var(--cyan),var(--blue),var(--violet),var(--gold));background-size:300% 300%;animation:flow 6s linear infinite;-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+.e-num{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--gold2),var(--gold));color:#1a1204;display:grid;place-items:center;font-family:var(--f-en);font-weight:900;font-size:1.4rem;box-shadow:0 8px 20px -6px rgba(247,201,72,.8)}
+.easy-card h2{margin:0;font-size:1.5rem;font-weight:900;color:var(--ink)}
+.easy-card p{margin:0;color:var(--muted);font-size:1rem;max-width:30ch}
+.e-field{width:100%;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:16px;padding:14px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.e-field .v{font-family:var(--f-en);font-size:1.1rem;font-weight:700;direction:ltr;overflow-wrap:anywhere;text-align:start}
+.e-copy{flex:none;border:0;background:linear-gradient(135deg,var(--blue),var(--blue-dark));color:#fff;border-radius:12px;padding:12px 18px;font:inherit;font-weight:800;font-size:1rem;cursor:pointer}
+.e-copy.done{background:linear-gradient(135deg,#34d399,var(--ok))}
+.e-otp{font-family:var(--f-en);font-size:2.6rem;font-weight:900;letter-spacing:.14em;color:#6ee7b7;direction:ltr;text-shadow:0 0 18px rgba(16,185,129,.7)}
+.e-get{border:0;background:linear-gradient(135deg,#10b981,#059669);color:#fff;border-radius:14px;padding:15px 22px;font:inherit;font-weight:900;font-size:1.05rem;cursor:pointer}
+.e-emoji{font-size:58px;line-height:1}
+.easy-nav{display:grid;grid-template-columns:1fr 1.5fr;gap:10px}
+.easy-nav button{font:inherit;font-weight:900;border:0;border-radius:16px;padding:16px;cursor:pointer;font-size:1.05rem}
+.easy-nav .n{background:linear-gradient(135deg,var(--gold2),var(--gold) 45%,#d39314);color:#1d1503;box-shadow:0 12px 26px -12px rgba(247,201,72,.9)}
+.easy-nav .p{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.easy-phone{position:relative;width:130px;height:250px;border-radius:22px;background:#0b0f1d;border:4px solid #2b3350;overflow:hidden;box-shadow:0 14px 30px -10px rgba(0,0,0,.7)}
 </style>
 <!--HEAD-END-->
 </head>
@@ -444,6 +477,26 @@ html[dir="rtl"] .support-option-btn svg{transform:scaleX(-1)}
       </div>
       <button class="warn-listen" id="warnListen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a9 9 0 0 1 0 14"/></svg><span id="warnListenLabel">گوێ بگرە</span></button>
       <button class="modal-btn" id="closeModalBtn" type="button">تێگەیشتم، پیشاندانی زانیارییەکان</button>
+    </div>
+  </div>
+
+  <!-- Mode picker: easy / full -->
+  <div class="lang-modal-overlay" id="modeModal" style="display:none">
+    <div class="lang-select-card">
+      <h3 class="lang-select-title">چۆن دەتەوێت درێژە بدەیت؟<br><span style="font-size:0.8rem;color:var(--muted);font-weight:500">How do you want to continue?</span></h3>
+      <div class="lang-options">
+        <button class="mode-opt" id="modeEasy" type="button"><span class="ic">🧭</span><span class="tx"><b>دۆخی ئاسان</b><span>هەنگاو بە هەنگاو · بۆ ئەوانەی نوێن</span></span></button>
+        <button class="mode-opt" id="modeFull" type="button"><span class="ic">📋</span><span class="tx"><b>پیشاندانی هەمووی</b><span>هەموو زانیاری پێکەوە · بۆ شارەزایان</span></span></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Easy wizard -->
+  <div class="easy-overlay" id="easyModal">
+    <div class="easy-wrap">
+      <div class="easy-top"><span class="sc" id="easySc"></span><div class="tk"><i id="easyFill"></i></div><button class="x" id="easyX" type="button">✕</button></div>
+      <div class="easy-card" id="easyCard"></div>
+      <div class="easy-nav"><button class="p" id="easyPrev" type="button">‹ پێشوو</button><button class="n" id="easyNext" type="button">دواتر ›</button></div>
     </div>
   </div>
 
@@ -631,12 +684,20 @@ if (lang) {
   updateTexts();
 }
 
+let viewMode = null, easyOpened = false, easyAcct = null, easySteps = [], easyI = 0;
 closeModalBtn.onclick = () => {
   try { if ('speechSynthesis' in window) speechSynthesis.cancel(); } catch(e) {}
   synthOn = false;
   warningModal.style.display = 'none';
-  loadData();
+  const saved = store.get('dubra_mode');
+  if (saved) { viewMode = saved; easyOpened = false; loadData(); }
+  else { document.getElementById('modeModal').style.display = 'grid'; primeSpeech(); }
 };
+document.getElementById('modeEasy').onclick = () => { document.getElementById('modeModal').style.display = 'none'; viewMode = 'easy'; store.set('dubra_mode', 'easy'); easyOpened = false; loadData(); };
+document.getElementById('modeFull').onclick = () => { document.getElementById('modeModal').style.display = 'none'; viewMode = 'full'; store.set('dubra_mode', 'full'); loadData(); };
+document.getElementById('easyPrev').onclick = () => { if (easyI > 0) { easyI--; renderEasy(); } };
+document.getElementById('easyNext').onclick = () => { if (easyI < easySteps.length - 1) { easyI++; renderEasy(); } else document.getElementById('easyModal').classList.remove('on'); };
+document.getElementById('easyX').onclick = () => { document.getElementById('easyModal').classList.remove('on'); try { if ('speechSynthesis' in window) speechSynthesis.cancel(); } catch(e) {} };
 const warnListenBtn = document.getElementById('warnListen');
 if (warnListenBtn) { if (!('speechSynthesis' in window)) warnListenBtn.hidden = true; else warnListenBtn.onclick = speakWarning; }
 ['simClose','simPrev','simNext','simPlay'].forEach(id => { const el = document.getElementById(id); if (el) el.onclick = { simClose: closeSim, simPrev: simPrev, simNext: simNext, simPlay: simToggle }[id]; });
@@ -852,6 +913,8 @@ function render(){
     doneBtnEl.classList.add('ok');
     celebrated = false; celebrate();
   };
+
+  if (viewMode === 'easy' && !easyOpened) { easyOpened = true; openEasy(parseData(d)); }
 }
 
 // کۆد خۆکارانە و بە خێرایی دەگەڕێت: هەر ٢ چرکە تاقی دەکاتەوە تا دەیدۆزێتەوە (بۆ ٢٥ چرکە)
@@ -953,6 +1016,71 @@ function warningPlain(){
   return (t.warningTitle + '. ' + t.warningText).replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, ' ').replace(/[⚠✅️]/g, ' ').replace(/\s+/g, ' ').trim();
 }
 function speakWarning(){ speakToggle(warningPlain(), document.getElementById('warnListen')); }
+
+// ===== دۆخی ئاسان (Easy Mode wizard) =====
+function parseData(d){
+  const values = d.data || []; let email = '', pass = '', otpLink = '', dob = '', phone = '';
+  for (const v of values){ if (v == null || String(v).trim() === '') continue; const s = String(v).trim();
+    if (s.startsWith('http://') || s.startsWith('https://')) { otpLink = s; continue; }
+    if (!email) email = s; else if (!pass) pass = s; else if (!dob) dob = s; else if (!phone) phone = s; }
+  return { email: fmt(email), pass: fmt(pass), otpLink, dob: fmt(dob), phone: fmt(phone) };
+}
+async function fetchOtpRaw(url){
+  try { const r = await fetch(OTP_API, { method: 'POST', cache: 'no-store', headers: { 'Content-Type': 'application/json', apikey: KEY }, body: JSON.stringify({ code }) }).then(res => res.json()); if (r && r.ok && r.otp) return r.otp; } catch(e){}
+  try { const text = await fetch(url, { cache: 'no-store' }).then(res => res.text()); let c = extractCode(text); if (!c){ const doc = new DOMParser().parseFromString(text, 'text/html'); c = extractCode(doc.body ? doc.body.textContent : text); } return c; } catch(e){}
+  return '';
+}
+function easyHome(){ return `<div class="easy-phone"><div class="ios ios-home"><i></i><i></i><i></i><i></i><i></i><i class="as"></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="sim-tap" style="left:37%;top:50%"></span></div>`; }
+function easyApp(){ return `<div class="easy-phone"><div class="ios ios-white"><div class="ios-top"><b>Today</b><span class="ios-av"></span></div><div class="ios-card"></div><div class="ios-card c2"></div></div><span class="sim-tap" style="left:86%;top:13%"></span></div>`; }
+function openEasy(a){
+  const t = T[lang || 'ku']; easyAcct = a;
+  easySteps = [
+    { k: 'phone', n: 1, t: t.g1t, d: t.g1d, phone: easyHome() },
+    { k: 'phone', n: 2, t: t.g2t, d: t.g2d, phone: easyApp() },
+    { k: 'copy', n: 3, t: t.email, val: a.email },
+    { k: 'copy', n: 4, t: t.password, val: a.pass },
+  ];
+  if (a.otpLink) easySteps.push({ k: 'otp', n: 5, t: t.otpTitle });
+  easySteps.push({ k: 'done', n: easySteps.length + 1 });
+  easyI = 0;
+  document.getElementById('easyModal').classList.add('on');
+  renderEasy();
+}
+function renderEasy(){
+  const s = easySteps[easyI], t = T[lang || 'ku'], last = easyI === easySteps.length - 1;
+  document.getElementById('easySc').textContent = (easyI + 1) + ' / ' + easySteps.length;
+  document.getElementById('easyFill').style.width = ((easyI + 1) / easySteps.length * 100) + '%';
+  const card = document.getElementById('easyCard');
+  let h;
+  if (s.k === 'done') h = `<div class="e-emoji">🎉</div><h2>${esc(t.thanks)}</h2>`;
+  else {
+    h = `<div class="e-num">${s.n}</div><h2>${esc(s.t)}</h2>` + (s.d ? `<p>${esc(s.d)}</p>` : '');
+    if (s.phone) h += s.phone;
+    else if (s.k === 'copy') h += `<div class="e-field"><span class="v">${esc(s.val)}</span><button class="e-copy" data-c="${esc(s.val)}">${esc(t.copy)}</button></div>`;
+    else if (s.k === 'otp') h += `<div id="easyOtp"><button class="e-get" id="easyGet">🔄 ${esc(t.updateBtn)}</button></div>`;
+  }
+  card.innerHTML = h;
+  document.getElementById('easyPrev').style.visibility = easyI === 0 ? 'hidden' : 'visible';
+  document.getElementById('easyPrev').textContent = t.dir === 'ltr' ? '‹ Back' : '‹ پێشوو';
+  document.getElementById('easyNext').textContent = last ? (t.dir === 'ltr' ? 'Finish ✓' : 'تەواو ✓') : (t.dir === 'ltr' ? 'Next ›' : 'دواتر ›');
+  card.querySelectorAll('[data-c]').forEach(b => b.onclick = () => { if (navigator.clipboard) navigator.clipboard.writeText(b.dataset.c).then(() => { b.textContent = t.copied; b.classList.add('done'); }).catch(() => {}); });
+  const g = document.getElementById('easyGet');
+  if (g) g.onclick = async () => {
+    g.textContent = '…'; g.disabled = true;
+    const c = await fetchOtpRaw(easyAcct.otpLink);
+    const bx = document.getElementById('easyOtp');
+    if (!bx) return;
+    if (c) {
+      bx.innerHTML = `<div class="e-otp">${esc(c.slice(0,3) + ' ' + c.slice(3))}</div><button class="e-copy" data-c="${esc(c)}">${esc(t.copy)}</button>`;
+      bx.querySelector('[data-c]').onclick = function(){ if (navigator.clipboard) navigator.clipboard.writeText(c).then(() => { this.textContent = t.copied; this.classList.add('done'); }); };
+      playNotificationSound();
+    } else {
+      bx.innerHTML = `<p style="color:var(--muted);margin:0 0 8px">${esc(t.otpNone)}</p><button class="e-get" id="easyGet2">🔄 ${esc(t.updateBtn)}</button>`;
+      document.getElementById('easyGet2').onclick = g.onclick;
+    }
+  };
+  sayNow((s.t || '') + (s.d ? '. ' + s.d : ''));
+}
 // ===== ڕێبەری ئەنیمەیشنی زیندوو (Simulator) =====
 const SIM_POS = [ {x:37,y:50}, {x:86,y:13}, {x:50,y:72}, {x:50,y:20}, {x:50,y:40}, {x:50,y:34} ];
 function simScreen(i){
